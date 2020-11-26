@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='chart.js') }}"></script>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nerko+One&family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300;400&family=Lora&family=Merriweather:wght@300&family=Oswald&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300&family=Lora&family=Merriweather:wght@300&family=Oswald&display=swap"
+          rel="stylesheet">
+<body>
+<div class="full" style="backround-color:white;">
+    <div class="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-info" style="height:100px;">
+            <a class="navbar-brand" href="#" style="color:white;font-weight:700; font-size:38px">
+                TRACKING NEWS<br>
+                <h6 style="padding-left:0px; font-size:20px;">Theo dõi các trang tin tức online</h6>
+            </a>
+
+        </nav>
+    </div>
+
+    <div class="update-tus">
+        <p>Model đã cập nhật lúc {{date_time}} </p>
+
+    </div>
+    <div class="Sort-Keyword">
+        <form class="form-inline" method="POST">
+            <input
+                    class="form"
+                    type="search"
+                    placeholder="Enter keyword...."
+                    aria-label="Search"
+                    name="numKey"
+            />
+            <button class="btn-sortKeyword" type="submit">Số lượng từ khóa</button>
+        </form>
+    </div>
+    <div class="topic-content">
+        <div class="tag">
+            <span style="font-family: 'Grandstander', cursive;
+                            font-family: 'Lora', serif;
+                            font-family: 'Merriweather', serif;
+                            font-family: 'Oswald', sans-serif;"><h6>Hot topics</h6></span>
+        </div>
+        <div class="container">
+            <div class="hot-topic">
+                {% for i in array: %}
+                <a class="det" href="/listdoc/{{i}}">
+
+                    <span style="color:#17a2b8;font-weight: 700;font-family:Open Sans;">Topic {{i+1}}:</span>
+                    <br>
+                    <span style="padding: 2px 2px;
+                                font-family: 'Roboto', sans-serif;">{{array[i]}}</span>
+                    <
+                </a>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="new-article">
+    <div class="tag">
+        <span style="font-family: 'Grandstander', cursive;
+                            font-family: 'Lora', serif;
+                            font-family: 'Merriweather', serif;
+                            font-family: 'Oswald', sans-serif;"><h6>New articles</h6></span>
+    </div>
+    <div class="card-container">
+
+        {%for newspaper in list_new_newspaper: %}
+        <div class="card">
+            {
+            <div class="card-body ">
+                <h5 class="card-title">{{newspaper['topic']}}</h5>
+                <p class="card-text">
+                    {{newspaper['sapo']}}
+                </p>
+                <a href={{newspaper['href']}} class="btn btn-primary">Bài viết</a>
+            </div>
+        </div>
+        {% endfor %}
+        <h1>Simple Line Chart</h1>
+        <!-- bar chart canvas element -->
+        <canvas id="myChart" width="600" height="400"></canvas>
+
+
+    </div>
+</div>
+</body>
+</html>
