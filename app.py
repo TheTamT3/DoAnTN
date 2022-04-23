@@ -18,25 +18,21 @@ def getData():
 
 result,top2vec,df,time = getData()
 
+
 @app.route('/',methods = ['POST','GET'])
 def index():
-    # print(request.method)
     dic ={}
     date_time = time
-    print('data_time',date_time)
     # print(result)
     ds,topic_nums,topic_sizes =  model.document_similar_topic(top2vec,df)
     legend = "month"
-    print("test",topic_nums)
     if request.method == "POST":
         numKey = int(request.form['numKey'])
         for i in range(len(result)):
             dic[i] = " - ".join(result[i][:numKey])
-            print(dic[i])
         return render_template('index.html', array=dic, date_time=date_time,labels = topic_nums,values1 = topic_sizes,legend=legend)
     for i in range(len(result)):
         dic[i] = " - ".join(result[i][:10])
-        print(dic[i])
 
     return render_template('index.html', array=dic, date_time=date_time, labels=topic_nums, values=topic_sizes)
 
@@ -47,10 +43,13 @@ def doc_topic(id):
     data = list(df['article_list'])
     list_new_newspaper = data[:10]
     return render_template('index2.html',list_topic = list_topic[int(id)],list_new_newspaper=list_new_newspaper)
+
+
 @app.route('/doc/<id_news>',methods = ['POST','GET'])
 def doc_to_doc(id_news):
     list_doc_similar = model.document_similar_document(top2vec,int(id_news),df)
     return render_template('index3.html',list_doc_similar = list_doc_similar)
+
 
 if __name__ == '__main__':
         app.run(debug=True)

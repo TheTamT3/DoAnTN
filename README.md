@@ -2,6 +2,7 @@
 Xây dựng 1 ứng dụng nhằm theo dõi tin tức từ các trang báo online tại Việt Nam bằng cách áp dụng mô hình chủ đềE Với ứng dụng này, người đọc có thềEnắm bắt các 
 chủ đềEnóng thông qua các từ khóa được xác định từ việc áp dụng mô hình chủ đềE Không chềEvậy, người dùng còn có thềExem các bài báo liên quan đến từng chủ đềEvà được gợI 
 ý các bài báo có nội dung tương tự với bài báo vừa xem.
+
 # 2. Mô hình chủ đềE(Topic modelling)
 Top2vec là một phương pháp mới với cách tiếp cận hoàn toàn khác so với các phương pháp truyền thống như LDA, PLSA… Với các phương pháp truyền thống, đó là các mô hình sinh xác suất trong đó mỗi tài liệu như một hỗn hợp các chủ đềEvà mỗi chủ đềEnhư một sự phân phối của các từ. Ngược lại, top2vec tìm ra các vec-tơ chủ đềEbằng cách nhúng các vec-tơ từ và tài liệu vào trong cùng không gian ngữ nghĩa, và những từ gần nhất với vec-tơ chủ đềEđó sẽ là những từ mô tả tốt nhất chủ đềEđó.
 # 3. Nguyên lý hoạt động Top2vec
@@ -18,6 +19,8 @@ Mỗi khu vực dày đặc là một chủ đềEvà các từ thu hút các t�
 • Gợi ý các bài báo liên quan từ một bài báo cụ thềE
 
 • Tự động cập nhật theo thời gian
+
+
 
  
 
